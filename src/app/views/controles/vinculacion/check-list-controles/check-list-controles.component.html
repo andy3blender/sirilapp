@@ -1,0 +1,11 @@
+<ejs-grid #grid [dataSource]='inventarioData' allowPaging='true' [pageSettings]='pageSettings' [selectionSettings]="selectOptions" [toolbar]='toolbar' (toolbarClick)='clickHandler($event)'>
+    <e-columns>
+        <e-column type='checkbox' width='50'></e-column>
+        <e-column field='controlId' isPrimaryKey='true' headerText='ID' width='60'></e-column>
+        <e-column field='nombre' headerText='Control' width=120></e-column>
+        <e-column field='nombreAplicacion' headerText='Aplicación' width=90></e-column>
+        <e-column field='nombrePeriodicidad' headerText='Periodicidad' format='C2' width=90></e-column>
+        <e-column field='nombreResponsabilidad' headerText='Responsabilidad' width=90></e-column>
+        <e-column field='nombreDocumentacion' headerText='Documentación' width=90></e-column>
+    </e-columns>
+</ejs-grid>

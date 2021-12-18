@@ -1,0 +1,19 @@
+/* .mat-stepper-horizontal {
+    margin-top: 8px;
+} */
+
+.mat-form-field {
+    margin-top: 16px;
+    width: 200px;
+}
+
+.dialog-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+
+/* .input {
+    width: 250px;
+} */

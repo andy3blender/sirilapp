@@ -1,1 +1,41 @@
-/* You can add global styles to this file, and also import other style files */
+/* syncfusion styles */
+
+
+/* @import "../node_modules/@syncfusion/ej2-base/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-angular-navigations/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-inputs/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-buttons/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-treegrid/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-grids/styles/material.css"; */
+
+@import "../node_modules/@syncfusion/ej2-base/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-buttons/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-calendars/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-dropdowns/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-inputs/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-navigations/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-popups/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-splitbuttons/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-grids/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-angular-grids/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-treegrid/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-angular-layouts/styles/material.css";
+.mat-snack-bar-container {
+    text-align: center;
+    /* font-weight: bold; */
+}
+
+.mat-snack-bar-container.error {
+    color: #fff;
+    background: #ea5455;
+}
+
+.mat-snack-bar-container.success {
+    color: #fff;
+    background: #28a745;
+}
+
+.mat-snack-bar-container.info {
+    color: #fff;
+    background: #3085d6;
+}

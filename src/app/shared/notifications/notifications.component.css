@@ -1,0 +1,20 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    padding: 2px;
+}
+
+.grid-item {
+    padding: 3px;
+}
+
+.grid-item-close {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    /* justify-items: center;
+    align-items: center; */
+}
+
+.icon-size {
+    font-size: 18px;
+}

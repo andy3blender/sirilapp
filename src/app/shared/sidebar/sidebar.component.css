@@ -1,0 +1,14 @@
+.activeItem {
+    font-style: italic;
+    /* font-weight: bold; */
+}
+
+.activeItem::before {
+    font-family: "FontAwesome";
+    font-style: normal;
+    font-weight: normal;
+    /* font-weight: 900; */
+    content: "\f101";
+    color: blue;
+    /* content: "&#xf164"; */
+}

@@ -1,0 +1,150 @@
+<!-- <div class="control-section">
+    <ejs-dashboardlayout id='defaultLayout' #defaultLayout [columns]="3" [cellSpacing]='cellSpacing' [mediaQuery]='mediaQuery'>
+        <div id="one" class="e-panel" data-row="0" data-col="0" data-sizeX="1" data-sizeY="1">
+            <span id="close" class="e-template-icon e-clear-icon"></span>
+            <div class="e-panel-container">
+                <div style="width:400px;">
+                    <ejs-accumulationchart id="pieFactor" [legendSettings]='legendSettings' [title]='titlePieFactor' [tooltip]='tooltip' height="90%">
+                        <e-accumulation-series-collection>
+                            <e-accumulation-series [dataSource]='pieFactorData' xName='nombreVariable' yName='total' [explode]='true' explodeOffset='10%'></e-accumulation-series>
+                        </e-accumulation-series-collection>
+                    </ejs-accumulationchart>
+                </div>
+            </div>
+        </div>
+        <div id="four" class="e-panel" data-row="0" data-col="1" data-sizeX="1" data-sizeY="1">
+            <span id="close" class="e-template-icon e-clear-icon"></span>
+            <div class="e-panel-container">
+                <div style="width:400px">
+                    <ejs-chart id='chartFR' [primaryXAxis]='primaryXAxis' [title]='titleFR' [legendSettings]='legendSettings' [tooltip]='tooltip' height="90%">
+                        <e-series-collection>
+                            <e-series [dataSource]='chartFRData' type='Column' xName='nombreVariable' yName='total' name='Riesgos'></e-series>
+                        </e-series-collection>
+                    </ejs-chart>
+                </div>
+            </div>
+        </div>
+        <div id="five" class="e-panel" data-row="1" data-col="1" data-sizeX="2" data-sizeY="1">
+            <span id="close" class="e-template-icon e-clear-icon"></span>
+            <div class="e-panel-container">
+                <div style="width:800px;">
+                    <ejs-chart id='chartTE' [primaryXAxis]='primaryXAxis' [title]='titleTE' [legendSettings]='legendSettings' [tooltip]='tooltip' height="90%">
+                        <e-series-collection>
+                            <e-series [dataSource]='chartTEData' type='Column' xName='nombreVariable' yName='total' name='Riesgos'></e-series>
+                        </e-series-collection>
+                    </ejs-chart>
+                </div>
+            </div>
+        </div>
+        <div id="eight" class="e-panel" data-row="0" data-col="2" data-sizeX="1" data-sizeY="1">
+            <span id="close" class="e-template-icon e-clear-icon"></span>
+            <div class="e-panel-container">
+                <div style="width:450px; height:250px;">
+                    <ejs-circulargauge id='circular-container'>
+                        <e-axes>
+                            <e-axis minimum=0 radius='60%' [maximum]='rangoMaxCritico' startAngle=240 endAngle=120 [majorTicks]='majorTicks' [labelStyle]='labelStyle' [lineStyle]='lineStyle' [minorTicks]='minorTicks'>
+                                <e-ranges>
+                                    <e-range [start]='rangoMinBajo' [end]='rangoMaxBajo' [color]='colorBajo' startWidth=16 endWidth=16 roundedCornerRadius=5 legendText='Bajo'></e-range>
+                                    <e-range [start]='rangoMinMedio' [end]='rangoMaxMedio' [color]='colorMedio' startWidth=16 endWidth=16 legendText='Medio'></e-range>
+                                    <e-range [start]='rangoMinAlto' [end]='rangoMaxAlto' [color]='colorAlto' startWidth=16 endWidth=16 legendText='Alto'></e-range>
+                                    <e-range [start]='rangoMinCritico' [end]='rangoMaxCritico' [color]='colorCritico' startWidth=16 endWidth=16 roundedCornerRadius=5 legendText='Crítico'></e-range>
+                                </e-ranges>
+                                <e-pointers>
+                                    <e-pointer value=15 radius='60%' pointerWidth=8 [needleTail]='tail' [cap]="pointerCap">
+                                    </e-pointer>
+                                </e-pointers>
+                            </e-axis>
+                        </e-axes>
+                    </ejs-circulargauge>
+                </div>
+            </div>
+        </div>
+
+        <div id="gauRR" class="e-panel" data-row="1" data-col="2" data-sizeX="1" data-sizeY="1">
+            <span id="close" class="e-template-icon e-clear-icon"></span>
+            <div class="e-panel-container">
+                aa
+            </div>
+        </div>
+    </ejs-dashboardlayout>
+</div> -->
+
+
+<div class="row">
+    <!-- col-md-offset-2  -->
+    <div class="col-12 col-md-6 col-lg-4">
+        <div style="padding: 2px; overflow: hidden;" class="mat-elevation-z8">
+            <ejs-accumulationchart id="pieFactor" [legendSettings]='legendSettings' [title]='titlePieFactor' [tooltip]='tooltip' width="100%" height="70%" style="display: block;">
+                <e-accumulation-series-collection>
+                    <e-accumulation-series [dataSource]='pieFactorData' xName='nombreVariable' yName='total' [explode]='true' explodeOffset='10%' [palettes]='palette' [dataLabel]='datalabel'></e-accumulation-series>
+                </e-accumulation-series-collection>
+            </ejs-accumulationchart>
+        </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-4">
+        <div style="padding: 2px; overflow: hidden;" class="mat-elevation-z8">
+            <!-- height="60%" -->
+            <ejs-chart id='chartFR' [primaryXAxis]='primaryXAxis' [title]='titleFR' [legendSettings]='legendSettings' [tooltip]='tooltip' width="100%" height="70%" style="display: block;" [palettes]='paletteBar'>
+                <e-series-collection>
+                    <e-series [dataSource]='chartFRData' type='Column' xName='nombreVariable' yName='total' name='Riesgos' [marker]='marker'></e-series>
+                </e-series-collection>
+            </ejs-chart>
+        </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-4">
+        <!-- style="width: 350px; height: 250px;" -->
+        <div style="padding: 2px; height: 325px; overflow: hidden;" class="mat-elevation-z8">
+            <!-- height="40%" -->
+            <ejs-circulargauge id='circular-container' style="display: block;" title="Riesgo inherente promedio" [titleStyle]="titleGaugeStyle" width="100%">
+                <e-axes>
+                    <e-axis minimum=0 radius='65%' [maximum]='rangoMaxCritico' startAngle=268 endAngle=92 [labelStyle]='labelStyle' [lineStyle]='lineStyle' [majorTicks]='majorTicks' [minorTicks]='minorTicks' [annotations]='annotaionsGaugeI'>
+                        <e-ranges>
+                            <e-range [start]='rangoMinBajo' [end]='rangoMaxBajo' [color]='colorBajo' startWidth=16 endWidth=16 legendText='Bajo'></e-range>
+                            <e-range [start]='rangoMinMedio' [end]='rangoMaxMedio' [color]='colorMedio' startWidth=16 endWidth=16 legendText='Medio'></e-range>
+                            <e-range [start]='rangoMinAlto' [end]='rangoMaxAlto' [color]='colorAlto' startWidth=16 endWidth=16 legendText='Alto'></e-range>
+                            <e-range [start]='rangoMinCritico' [end]='rangoMaxCritico' [color]='colorCritico' startWidth=16 endWidth=16 legendText='Crítico'></e-range>
+                        </e-ranges>
+                        <e-pointers>
+                            <e-pointer [value]='promedioInherente' radius='60%' pointerWidth=8 [needleTail]='tail' [cap]="pointerCap">
+                            </e-pointer>
+                        </e-pointers>
+                    </e-axis>
+                </e-axes>
+            </ejs-circulargauge>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="padding-top: 15px;">
+    <div class="col-12 col-md-6 col-lg-8">
+        <div style="padding: 2px; overflow: hidden;" class="mat-elevation-z8">
+            <ejs-chart id='chartTE' [primaryXAxis]='primaryXAxis' [title]='titleTE' [legendSettings]='legendSettings' [tooltip]='tooltip' width="100%" height="70%" style="display: block;">
+                <e-series-collection>
+                    <e-series [dataSource]='chartTEData' type='Column' xName='nombreVariable' yName='total' name='Riesgos' [marker]='marker'></e-series>
+                </e-series-collection>
+            </ejs-chart>
+        </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-4">
+        <!-- style="width: 350px; height: 250px;" -->
+        <div style="padding: 2px; height: 325px; overflow: hidden;" class="mat-elevation-z8">
+            <!-- height="40%" -->
+            <ejs-circulargauge id='circular-containerRR' style="display: block;" title="Riesgo residual promedio" [titleStyle]="titleGaugeStyle" width="100%">
+                <e-axes>
+                    <e-axis minimum=0 radius='65%' [maximum]='rangoMaxCritico' startAngle=268 endAngle=92 [majorTicks]='majorTicks' [labelStyle]='labelStyle' [lineStyle]='lineStyle' [minorTicks]='minorTicks' [annotations]='annotaionsGaugeR'>
+                        <e-ranges>
+                            <e-range [start]='rangoMinBajo' [end]='rangoMaxBajo' [color]='colorBajo' startWidth=16 endWidth=16 legendText='Bajo'></e-range>
+                            <e-range [start]='rangoMinMedio' [end]='rangoMaxMedio' [color]='colorMedio' startWidth=16 endWidth=16 legendText='Medio'></e-range>
+                            <e-range [start]='rangoMinAlto' [end]='rangoMaxAlto' [color]='colorAlto' startWidth=16 endWidth=16 legendText='Alto'></e-range>
+                            <e-range [start]='rangoMinCritico' [end]='rangoMaxCritico' [color]='colorCritico' startWidth=16 endWidth=16 legendText='Crítico'></e-range>
+                        </e-ranges>
+                        <e-pointers>
+                            <e-pointer [value]='promedioResidual' radius='60%' pointerWidth=8 [needleTail]='tail' [cap]="pointerCap">
+                            </e-pointer>
+                        </e-pointers>
+                    </e-axis>
+                </e-axes>
+            </ejs-circulargauge>
+        </div>
+    </div>
+</div>

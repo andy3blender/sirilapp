@@ -1,0 +1,45 @@
+<div class="search-div">
+    <mat-form-field appearance="fill">
+        <mat-label>Catálogos disponibles</mat-label>
+        <mat-select (valueChange)="grupoChange($event)">
+            <mat-option *ngFor="let grupo of catalogoGrupos" [value]="grupo.grupoId">
+                {{ grupo.nombre }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+
+<button mat-raised-button matTooltip="Crear nuevo registro" color="primary" class="btn-add" (click)="dialogNewItem()" [disabled]="grupoId == 0">
+    <mat-icon>add</mat-icon>Crear
+</button>
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container matColumnDef="codigo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Codigo </th>
+            <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="valor">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Valor </th>
+            <td mat-cell *matCellDef="let element"> {{element.valor}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="acciones">
+            <th mat-header-cell *matHeaderCellDef> </th>
+            <td mat-cell *matCellDef="let element" style="text-align: right;">
+                <a class="pointer" style="color: #1f5164;" matTooltip="Editar" (click)="dialogEditItem(element)">
+                    <mat-icon>edit</mat-icon>
+                </a>
+
+                <a class="pointer" style="color: #e15634;" matTooltip="Eliminar" (click)="eliminarItem(element.catalogoId)">
+                    <mat-icon>delete</mat-icon>
+                </a>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page"></mat-paginator>
+</div>

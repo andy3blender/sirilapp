@@ -1,0 +1,16 @@
+table {
+    width: 100%;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.search-div {
+    margin: 10px;
+}
+
+.search-form-field {
+    width: 85%;
+    margin-left: 10px;
+}

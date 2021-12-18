@@ -1,0 +1,45 @@
+<app-header></app-header>
+
+<div class="main-container ace-save-state" id="main-container">
+
+
+    <!-- ace-save-state // si se desea que aparezaca normal de debe aumentar esta clase y eliminar la menu-min -->
+    <!-- menu-min   //aumento esta clase para que de incio aparezca el menu collapsado -->
+    <div id="sidebar" class="sidebar responsive menu-min">
+        <app-sidebar></app-sidebar>
+    </div>
+
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="ace-icon fa fa-map-marker home-icon"></i>
+                        <span class="rutaBread"> {{ breadCrumb }} </span>
+                    </li>
+                </ul>
+
+                <!-- <div class="nav-search" id="nav-search">
+                    <form class="form-search">
+                        <span class="input-icon">
+                          <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                          <i class="ace-icon fa fa-search nav-search-icon"></i>
+                        </span>
+                    </form>
+                </div> -->
+            </div>
+
+            <div class="page-content">
+                <div class="row">
+                    <div class="col-xs-12">
+
+                        <router-outlet></router-outlet>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

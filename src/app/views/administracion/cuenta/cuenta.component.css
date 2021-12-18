@@ -1,0 +1,43 @@
+.personalInfoContainer {
+    display: flex;
+    flex-direction: row;
+    /* column-gap: 15px; */
+    justify-content: space-evenly;
+}
+
+.uploaderContainer {
+    display: flex;
+    /* justify-items: center; */
+    justify-content: center;
+    flex-direction: column;
+    /* column-gap: 10px; */
+    row-gap: 10px;
+    width: 280px;
+}
+
+.fotoPerfil {
+    border-radius: 50%;
+    width: 150;
+    height: 150;
+}
+
+.espacioVertical {
+    padding-top: 15px;
+}
+
+.espacioVerticalCards {
+    padding-top: 0px;
+}
+
+@media (max-width: 768px) {
+    .espacioVerticalCards {
+        padding-top: 15px;
+    }
+    .personalInfoContainer {
+        display: flex;
+        /* flex-direction: row;
+        column-gap: 15px; */
+        flex-direction: column;
+        justify-content: center;
+    }
+}

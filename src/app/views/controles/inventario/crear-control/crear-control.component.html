@@ -1,0 +1,93 @@
+<h3 mat-dialog-title>{{tituloDialog}}</h3>
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="controlFormGroup">
+
+        <div style="display: block; visibility: hidden; height: 0; width: 0;">
+            <mat-form-field class="inputForm">
+                <mat-label>ControlId</mat-label>
+                <input matInput formControlName="controlId">
+            </mat-form-field>
+        </div>
+
+        <div class="col-sm-12 col-md-6">
+            <mat-form-field class="inputForm celdaIndiviual">
+                <mat-label>Código</mat-label>
+                <input matInput formControlName="codigo" required>
+                <mat-error *ngIf="controlFormGroup.get('codigo').errors?.required">Campo obligatorio</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="col-sm-12 col-md-6">
+            <mat-form-field class="inputForm celdaIndiviual">
+                <mat-label>Nombre</mat-label>
+                <input matInput formControlName="nombre" required>
+                <mat-error *ngIf="controlFormGroup.get('nombre').errors?.required">Campo obligatorio</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="col-sm-12 col-md-12">
+            <mat-form-field class="inputForm celdaCombinada">
+                <mat-label>Detalle</mat-label>
+                <textarea matInput formControlName="detalle"></textarea>
+            </mat-form-field>
+        </div>
+
+        <div class="col-sm-12 col-md-6">
+            <mat-form-field class="inputForm celdaIndiviual">
+                <mat-label>Aplicación</mat-label>
+                <mat-select formControlName="aplicacion" required>
+                    <mat-option *ngFor="let res of dataAplicacion" [value]="res.codigo">
+                        {{res.valor}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="controlFormGroup.get('aplicacion').errors?.required">Campo obligatorio</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="col-sm-12 col-md-6">
+            <mat-form-field class="inputForm celdaIndiviual">
+                <mat-label>Periodicidad</mat-label>
+                <mat-select formControlName="periodicidad" required>
+                    <mat-option *ngFor="let res of dataPeriodicidad" [value]="res.codigo">
+                        {{res.valor}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="controlFormGroup.get('periodicidad').errors?.required">Campo obligatorio</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="col-sm-12 col-md-6">
+            <mat-form-field class="inputForm celdaIndiviual">
+                <mat-label>Responsabilidad</mat-label>
+                <mat-select formControlName="responsabilidad" required>
+                    <mat-option *ngFor="let res of dataResponsabilidad" [value]="res.codigo">
+                        {{res.valor}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="controlFormGroup.get('responsabilidad').errors?.required">Campo obligatorio</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="col-sm-12 col-md-6">
+            <mat-form-field class="inputForm celdaIndiviual">
+                <mat-label>Documentacion</mat-label>
+                <mat-select formControlName="documentacion" required>
+                    <mat-option *ngFor="let res of dataDocumentacion" [value]="res.codigo">
+                        {{res.valor}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="controlFormGroup.get('documentacion').errors?.required">Campo obligatorio</mat-error>
+            </mat-form-field>
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close color="warn">
+        <mat-icon>not_interested</mat-icon> Cancelar
+    </button>
+
+    <button mat-raised-button color="primary" (click)="guardar()">
+        <mat-icon>save</mat-icon> Guardar
+    </button>
+</mat-dialog-actions>

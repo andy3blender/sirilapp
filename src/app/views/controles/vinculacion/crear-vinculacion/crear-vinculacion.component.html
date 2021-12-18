@@ -1,0 +1,130 @@
+<mat-horizontal-stepper linear #stepper>
+    <mat-step [stepControl]="riesgoFormGroup">
+        <form [formGroup]="riesgoFormGroup">
+            <ng-template matStepLabel>Seleccione el riesgo</ng-template>
+
+            <div class="col-sm-12 col-md-6">
+                <mat-form-field class="inputForm celdaIndiviual">
+                    <mat-label>Proceso</mat-label>
+                    <mat-select formControlName="proceso" required (valueChange)="cmbProcesoChange($event)">
+                        <mat-option *ngFor="let res of dataProcesos" [value]="res.procesoId">
+                            {{res.nombre}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="riesgoFormGroup.get('proceso').errors?.required">Seleccione un proceso</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-sm-12 col-md-6">
+                <mat-form-field class="inputForm celdaIndiviual">
+                    <mat-label>Actividad</mat-label>
+                    <mat-select formControlName="actividad" required (valueChange)="cmbActividadChange($event)">
+                        <mat-option *ngFor="let res of dataActividades" [value]="res.procesoId">
+                            {{res.nombre}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="riesgoFormGroup.get('actividad').errors?.required">Seleccione una actividad</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-sm-12 col-md-12">
+                <mat-form-field class="inputForm celdaCombinada">
+                    <mat-label>Riesgo</mat-label>
+                    <!-- (valueChange)="cmbRiesgoChange($event)" [(ngModel)]="riesgoSeleccionado"-->
+                    <mat-select formControlName="riesgo" required (selectionChange)="cmbRiesgoChange($event)">
+                        <mat-option *ngFor="let res of dataRiesgo" [value]="res.riesgoId">
+                            {{res.nombre}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="riesgoFormGroup.get('riesgo').errors?.required">Seleccione un riesgo</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <button mat-raised-button matStepperNext color="primary" [disabled]="!riesgoFormGroup.valid">Siguiente <mat-icon>fast_forward</mat-icon></button>
+            </div>
+        </form>
+    </mat-step>
+
+    <mat-step>
+        <!-- <form> -->
+        <ng-template matStepLabel>Agrege uno o más controles</ng-template>
+
+        <p class="tituloRiesgo">Riesgo: {{riesgoSeleccionado?.nombre}}</p>
+
+        <div class="controlSection">
+            <button mat-raised-button color="warn" (click)="dialogInventario()"><mat-icon>list</mat-icon> Inventario de controles</button>
+            <div style="clear: right;"></div>
+            <!-- (actionComplete)='actionComplete($event)' -->
+            <ejs-grid [dataSource]='controlRiesgoData' (actionBegin)="actionBegin($event)" [editSettings]='editSettings'>
+                <e-columns>
+                    <e-column field='controlEventoId' headerText='ID' isPrimaryKey="true" width=60 [visible]="false"></e-column>
+                    <e-column field='nombreControl' headerText='Control' width=150></e-column>
+                    <e-column field='peso' headerText='Peso' textAlign='Right' format='n' width=70></e-column>
+                    <e-column headerText=' ' width='50' [commands]='commands'></e-column>
+                </e-columns>
+            </ejs-grid>
+        </div>
+
+        <div class="col-sm-12">
+            <button mat-raised-button color="primary" matStepperPrevious><mat-icon>fast_rewind</mat-icon>Atrás</button>
+            <button mat-raised-button color="primary" matStepperNext [disabled]="!tieneControles">Siguiente<mat-icon>fast_forward</mat-icon></button>
+        </div>
+        <!-- </form> -->
+    </mat-step>
+    <mat-step [stepControl]="riesgoFormGroup">
+        <form [formGroup]="afectacionFormGroup">
+            <ng-template matStepLabel>Afectación</ng-template>
+
+            <div>
+                <mat-card class="col-sm-12 col-md-3 col-md-offset-2 cardRI">
+                    <!-- <mat-card-title>Riesgo Inherente</mat-card-title> col-sm-12 col-md-6-->
+                    <mat-card-subtitle>Riesgo Inherente</mat-card-subtitle>
+                    <mat-card-subtitle>{{riesgoSeleccionado?.nombreRI}}: {{riesgoSeleccionado?.riesgoInherente}}</mat-card-subtitle>
+                </mat-card>
+
+                <mat-card class="col-sm-12 col-md-3 col-md-offset-2 cardRR">
+                    <!-- <mat-card-title>Riesgo Residual</mat-card-title> -->
+                    <mat-card-subtitle>Riesgo Residual</mat-card-subtitle>
+                    <mat-card-subtitle>{{riesgoSeleccionado?.nombreRR}}: {{ riesgoSeleccionado?.riesgoResidual === null ? riesgoSeleccionado?.riesgoInherente : riesgoSeleccionado?.riesgoResidual }}</mat-card-subtitle>
+                </mat-card>
+            </div>
+
+            <!-- <div> -->
+            <div class="col-sm-12 col-md-6">
+                <mat-form-field class="inputForm celdaIndiviual">
+                    <mat-label>Afectación</mat-label>
+                    <mat-select formControlName="afectacion" required (valueChange)="cmbAfectacionChange($event)">
+                        <mat-option *ngFor="let res of afectacionData" [value]="res.codigo">
+                            {{res.valor}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="afectacionFormGroup.get('afectacion').errors?.required">Seleccione una opción</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-sm-12 col-md-6">
+                <mat-form-field class="inputForm celdaIndiviual">
+                    <mat-label>Suficiencia</mat-label>
+                    <mat-select formControlName="suficiencia" required (valueChange)="cmbSuficienciaChange($event)">
+                        <mat-option *ngFor="let res of suficienciaData" [value]="res.codigo">
+                            {{res.valor}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="afectacionFormGroup.get('suficiencia').errors?.required">Seleccione una opción</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-sm-12 col-md-6" style="padding-bottom: 15px;">
+                <button mat-raised-button color="warn" (click)="calculoResidual()"><mat-icon>refresh</mat-icon> Calcular</button>
+            </div>
+
+            <!-- </div> -->
+
+            <div class="col-sm-12">
+                <button mat-raised-button color="primary" matStepperPrevious style="padding-right: 5px;"><mat-icon>fast_rewind</mat-icon> Atrás</button>
+                <button mat-raised-button color="primary" (click)="finalizar()" [disabled]="!afectacionFormGroup.valid"><mat-icon>done</mat-icon> Finalizar</button>
+            </div>
+        </form>
+    </mat-step>
+</mat-horizontal-stepper>

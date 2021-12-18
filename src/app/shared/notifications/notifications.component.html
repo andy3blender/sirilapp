@@ -1,0 +1,17 @@
+<div class="grid-container">
+    <div class="grid-item-close">
+        <button *ngIf="data?.icon === 'error' " mat-icon-button aria-label="Close notification button" (click)="close()">
+            <mat-icon class="icon-size">close</mat-icon>
+        </button>
+    </div>
+    <div class="grid-item">
+        <mat-icon>{{data?.icon}}</mat-icon>
+    </div>
+    <div class="grid-item">{{ data?.message }}</div>
+</div>
+
+
+<!-- <mat-icon>{{data?.icon}}</mat-icon> <span>{{ data?.message }}</span>
+<button *ngIf="data?.icon === 'error' " mat-mini-fab aria-label="Close notification button" (click)="close()">
+    <mat-icon>close</mat-icon>
+</button> -->

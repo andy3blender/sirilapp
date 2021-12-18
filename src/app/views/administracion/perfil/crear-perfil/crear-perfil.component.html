@@ -1,0 +1,44 @@
+<h3 mat-dialog-title>{{tituloDialog}}</h3>
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="perfilFormGroup">
+
+        <div style="display: block; visibility: hidden; height: 0; width: 0;">
+            <mat-form-field>
+                <mat-label>PerfilId</mat-label>
+                <input matInput formControlName="perfilId">
+            </mat-form-field>
+        </div>
+
+        <div class="col-sm-12 col-md-6" style="display: flex; flex-direction: column;">
+            <mat-form-field>
+                <mat-label>Nombre</mat-label>
+                <input matInput formControlName="nombre" required>
+                <mat-error *ngIf="perfilFormGroup.get('nombre').errors?.required">Campo obligatorio</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Descripción</mat-label>
+                <textarea matInput #descripcion maxlength="250" formControlName="descripcion" rows="3"></textarea>
+                <mat-hint align="end">{{descripcion.value.length}} / 250</mat-hint>
+            </mat-form-field>
+        </div>
+
+        <div class="col-sm-12 col-md-6">
+            <!-- (nodeChecked)="getChecked($event)" -->
+            <span>Men&uacute; del sistema</span>
+            <ejs-treeview id='treeelement' #tree [fields]='field' [showCheckBox]='showCheckBox' [autoCheck]="false"></ejs-treeview>
+        </div>
+
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close color="warn">
+        <mat-icon>not_interested</mat-icon> Cancelar
+    </button>
+
+    <!-- (click)="guardaUsuario()" [disabled]="!usuarioFormGroup.valid" -->
+    <button mat-raised-button color="primary" (click)="guardaPermisos()">
+        <mat-icon>save</mat-icon> Guardar
+    </button>
+</mat-dialog-actions>

@@ -1,0 +1,94 @@
+<mat-tab-group>
+    <mat-tab label="Ponderacion variables">
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSourceVariable" matSort>
+
+                <ng-container matColumnDef="grupoId">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+                    <td mat-cell *matCellDef="let element"> {{element.grupoId}} </td>
+                    <td mat-footer-cell *matFooterCellDef></td>
+                </ng-container>
+
+                <ng-container matColumnDef="nombre">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Variable </th>
+                    <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+                    <td mat-footer-cell *matFooterCellDef></td>
+                </ng-container>
+
+                <ng-container matColumnDef="peso">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Peso </th>
+                    <td mat-cell align="right" *matCellDef="let element"> {{element.peso}} </td>
+                    <td mat-footer-cell *matFooterCellDef> Total: {{ totalPonderacionVariables() }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="acciones">
+                    <th mat-header-cell *matHeaderCellDef> </th>
+                    <td mat-cell *matCellDef="let element" style="text-align: right;">
+                        <a class="pointer" style="color: #1f5164;" matTooltip="Editar" (click)="dialogEditItem(element)">
+                            <mat-icon>edit</mat-icon>
+                        </a>
+
+                        <!-- <a class="pointer" style="color: #e15634;" matTooltip="Eliminar" (click)="eliminarItem(element.catalogoId)">
+                            <mat-icon>delete</mat-icon>
+                        </a> -->
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsVariable"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumnsVariable;"></tr>
+                <tr mat-footer-row *matFooterRowDef="['grupoId','nombre','peso']"></tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page"></mat-paginator>
+        </div>
+    </mat-tab>
+
+    <mat-tab label="Factores">
+        <div class="search-div">
+            <mat-form-field appearance="fill">
+                <mat-label>Variables</mat-label>
+                <mat-select (valueChange)="grupoChange($event)">
+                    <mat-option *ngFor="let grupo of catalogoGrupos" [value]="grupo.grupoId">
+                        {{ grupo.nombre }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource" matSort>
+
+                <ng-container matColumnDef="codigo">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Codigo </th>
+                    <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="valor">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Factor </th>
+                    <td mat-cell *matCellDef="let element"> {{element.valor}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="peso">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Peso </th>
+                    <td mat-cell *matCellDef="let element"> {{element.peso}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="acciones">
+                    <th mat-header-cell *matHeaderCellDef> </th>
+                    <td mat-cell *matCellDef="let element" style="text-align: right;">
+                        <a class="pointer" style="color: #1f5164;" matTooltip="Editar" (click)="dialogEditFactor(element)">
+                            <mat-icon>edit</mat-icon>
+                        </a>
+
+                        <!-- <a class="pointer" style="color: #e15634;" matTooltip="Eliminar" (click)="eliminarItem(element.catalogoId)">
+                            <mat-icon>delete</mat-icon>
+                        </a> -->
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page"></mat-paginator>
+        </div>
+    </mat-tab>
+</mat-tab-group>

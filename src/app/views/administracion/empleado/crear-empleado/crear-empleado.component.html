@@ -1,0 +1,58 @@
+<h3 mat-dialog-title>{{tituloDialog}}</h3>
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="personaFormGroup">
+        <div class="col-sm-12 col-md-6">
+            <mat-form-field>
+                <mat-label>Identificación</mat-label>
+                <input matInput formControlName="personaId" placeholder="Cédula o RUC" required>
+                <mat-error *ngIf="personaFormGroup.get('personaId').errors?.required">Campo obligatorio</mat-error>
+                <mat-error *ngIf="personaFormGroup.get('personaId').errors?.maxlength">Máximo 15 caracteres</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="col-sm-12 col-md-6">
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" placeholder="micorreo@ejemplo.com" required>
+                <mat-error *ngIf="personaFormGroup.get('email').errors?.required">Campo obligatorio</mat-error>
+                <mat-error *ngIf="personaFormGroup.get('email').errors?.email">Mail no válido</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="col-sm-12 col-md-6">
+            <mat-form-field>
+                <mat-label>Nombres</mat-label>
+                <input matInput formControlName="nombres" placeholder="Ingrese su nombre" required>
+                <mat-error *ngIf="personaFormGroup.get('nombres').errors?.required">Campo obligatorio</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="col-sm-12 col-md-6">
+            <mat-form-field>
+                <mat-label>Apellidos</mat-label>
+                <input matInput formControlName="apellidos" placeholder="Ingrese su apellido" required>
+                <mat-error *ngIf="personaFormGroup.get('apellidos').errors?.required">Campo obligatorio</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="col-sm-12 col-md-6">
+            <mat-form-field>
+                <mat-label>Fecha nacimiento</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="fechaNac">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close color="warn">
+        <mat-icon>not_interested</mat-icon> Cancelar
+    </button>
+
+    <button mat-raised-button color="primary" (click)="guardaPersona()" [disabled]="!personaFormGroup.valid">
+        <mat-icon>save</mat-icon> Guardar
+    </button>
+</mat-dialog-actions>

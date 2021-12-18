@@ -1,0 +1,156 @@
+<h3 mat-dialog-title>{{tituloDialog}}</h3>
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="riesgoFormGroup">
+
+        <div>
+            <div class="col-sm-12 col-md-6">
+                <mat-form-field class="inputForm celdaIndiviual">
+                    <mat-label>Proceso</mat-label>
+                    <mat-select (valueChange)="cmbProcesoChange($event)" [value]="editandoSubproceso">
+                        <mat-option *ngFor="let res of procesos" [value]="res.procesoId">
+                            {{res.nombre}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="riesgoFormGroup.get('responsable').errors?.required">Campo obligatorio</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-sm-12 col-md-6">
+                <mat-form-field class="inputForm celdaIndiviual">
+                    <mat-label>Actividad</mat-label>
+                    <mat-select (valueChange)="cmbActividadChange($event)" [value]="editandoActividad">
+                        <mat-option *ngFor="let res of actividades" [value]="res.procesoId">
+                            {{res.nombre}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div *ngIf="actividadSeleccionada">
+            <div style="display: block; visibility: hidden; height: 0; width: 0;">
+                <mat-form-field class="inputForm">
+                    <mat-label>RiesgoId</mat-label>
+                    <input matInput formControlName="riesgoId">
+                </mat-form-field>
+            </div>
+
+            <div class="col-sm-12 col-md-6">
+                <mat-form-field class="inputForm celdaIndiviual">
+                    <mat-label>Código</mat-label>
+                    <input matInput formControlName="codigo" required>
+                    <mat-error *ngIf="riesgoFormGroup.get('codigo').errors?.required">Campo obligatorio</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-sm-12 col-md-6">
+                <mat-form-field class="inputForm celdaIndiviual">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput formControlName="nombre" required>
+                    <mat-error *ngIf="riesgoFormGroup.get('nombre').errors?.required">Campo obligatorio</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-sm-12 col-md-12">
+                <mat-form-field class="inputForm celdaCombinada">
+                    <mat-label>Descripción</mat-label>
+                    <textarea matInput formControlName="descripcion"></textarea>
+                </mat-form-field>
+            </div>
+
+            <div class="col-sm-12 col-md-6">
+                <mat-form-field class="inputForm celdaIndiviual">
+                    <mat-label>Responsable</mat-label>
+                    <mat-select formControlName="responsable" required>
+                        <mat-option *ngFor="let res of cargos" [value]="res.codigo">
+                            {{res.valor}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="riesgoFormGroup.get('responsable').errors?.required">Campo obligatorio</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-sm-12 col-md-6">
+                <mat-form-field class="inputForm celdaIndiviual">
+                    <mat-label>Factor</mat-label>
+                    <mat-select formControlName="factorRiesgo" required>
+                        <mat-option *ngFor="let res of factor" [value]="res.codigo">
+                            {{res.valor}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="riesgoFormGroup.get('factorRiesgo').errors?.required">Campo obligatorio</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-sm-12 col-md-6">
+                <mat-form-field class="inputForm celdaIndiviual">
+                    <mat-label>Frecuencia</mat-label>
+                    <mat-select formControlName="frecuencia" required>
+                        <mat-option *ngFor="let res of frecuencia" [value]="res.codigo">
+                            {{res.valor}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="riesgoFormGroup.get('frecuencia').errors?.required">Campo obligatorio</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-sm-12 col-md-6">
+                <mat-form-field class="inputForm celdaIndiviual">
+                    <mat-label>Impacto</mat-label>
+                    <mat-select formControlName="impacto" required>
+                        <mat-option *ngFor="let res of impacto" [value]="res.codigo">
+                            {{res.valor}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="riesgoFormGroup.get('impacto').errors?.required">Campo obligatorio</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-sm-12 col-md-6">
+                <mat-form-field class="inputForm celdaIndiviual">
+                    <mat-label>Tipo de evento</mat-label>
+                    <mat-select formControlName="tipoEvento" required (valueChange)="cmbTipoEventoChange($event)">
+                        <mat-option *ngFor="let res of tipoEvento" [value]="res.codigo">
+                            {{res.valor}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="riesgoFormGroup.get('tipoEvento').errors?.required">Campo obligatorio</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-sm-12 col-md-6">
+                <mat-form-field class="inputForm celdaIndiviual">
+                    <mat-label>Causa</mat-label>
+                    <mat-select formControlName="tipoEvento2" required>
+                        <mat-option *ngFor="let res of tipoEvento2" [value]="res.codigo">
+                            {{res.valor}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="riesgoFormGroup.get('tipoEvento2').errors?.required">Campo obligatorio</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-sm-12 col-md-6">
+                <mat-form-field class="inputForm celdaIndiviual">
+                    <mat-label>Fuente de riego</mat-label>
+                    <mat-select formControlName="fuenteRiesgo" required>
+                        <mat-option *ngFor="let res of fuente" [value]="res.codigo">
+                            {{res.valor}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="riesgoFormGroup.get('fuenteRiesgo').errors?.required">Campo obligatorio</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close color="warn">
+        <mat-icon>not_interested</mat-icon> Cancelar
+    </button>
+
+    <button mat-raised-button color="primary" (click)="guardar()">
+        <mat-icon>save</mat-icon> Guardar
+    </button>
+</mat-dialog-actions>

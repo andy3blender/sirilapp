@@ -1,0 +1,70 @@
+<div class="search-div">
+    <button mat-raised-button matTooltip="Crear nuevo registro" color="primary" class="btn-add" (click)="dialogNew()">
+        <mat-icon>add</mat-icon>Crear
+    </button>
+    <mat-form-field class="search-form-field">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Buscar" #input>
+    </mat-form-field>
+</div>
+
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+        <!-- <ng-container matColumnDef="procesoId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> procesoId </th>
+            <td mat-cell *matCellDef="let element"> {{element.procesoId}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="subprocesoId">
+            <th mat-header-cell *matHeaderCellDef> subprocesoId </th>
+            <td mat-cell *matCellDef="let element"> {{element.subprocesoId}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actividadId">
+            <th mat-header-cell *matHeaderCellDef> actividadId </th>
+            <td mat-cell *matCellDef="let element"> {{element.actividadId}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="riesgoId">
+            <th mat-header-cell *matHeaderCellDef> riesgoId </th>
+            <td mat-cell *matCellDef="let element"> {{element.riesgoId}} </td>
+        </ng-container> -->
+
+        <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef> Riesgo </th>
+            <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="riesgoInherente">
+            <th mat-header-cell *matHeaderCellDef> Riesgo inherente </th>
+            <td mat-cell *matCellDef="let element"> {{element.riesgoInherente}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="riesgoResidual">
+            <th mat-header-cell *matHeaderCellDef> Riesgo residual</th>
+            <td mat-cell *matCellDef="let element"> {{element.riesgoResidual}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="totalControles">
+            <th mat-header-cell *matHeaderCellDef> Total controles</th>
+            <td mat-cell *matCellDef="let element"> {{element.totalControles}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="acciones">
+            <th mat-header-cell *matHeaderCellDef> </th>
+            <td mat-cell *matCellDef="let element" style="text-align: right;">
+                <a class="pointer" style="color: #1f5164;" matTooltip="Editar" (click)="dialogEdit(element)">
+                    <mat-icon>edit</mat-icon>
+                </a>
+                <a class="pointer" style="color: #e15634;" matTooltip="Eliminar" (click)="eliminar(element.riesgoId)">
+                    <mat-icon>delete</mat-icon>
+                </a>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" pageSize="10" aria-label="Select page of perfils"></mat-paginator>
+</div>
