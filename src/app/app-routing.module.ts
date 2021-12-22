@@ -6,12 +6,8 @@ import { LoginComponent } from './views/login/login.component';
 import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
-  // { path:'', 
-  //   component: HomeComponent,
-  //   children: homeRoutes
-  // },
   { path:'login', component: LoginComponent },
-    
+  { path: '**', redirectTo: 'login' },
   {
     path: '',
     canLoad: [AuthGuard],
