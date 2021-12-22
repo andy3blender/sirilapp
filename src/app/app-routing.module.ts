@@ -11,7 +11,7 @@ const routes: Routes = [
   //   children: homeRoutes
   // },
   { path:'login', component: LoginComponent },
-    
+  { path: '**', redirectTo: 'login' },
   {
     path: '',
     canLoad: [AuthGuard],
