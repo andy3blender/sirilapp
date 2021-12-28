@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit {
       if(this.usuarioActual.fotoUrl)
         this.fotoClient = this.fotoUrlServer+''+this.usuarioActual.fotoUrl;
       else
-        this.fotoClient = this.fotoUrlServer+'/Resources/Images/default.png';
+        this.fotoClient = this.fotoUrlServer+'Resources/Images/default.png';
 
       this.arrayNombres = this.usuarioActual.nombres.split(' ');
       if(this.arrayNombres.length > 0)

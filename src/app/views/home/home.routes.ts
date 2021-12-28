@@ -29,5 +29,6 @@ export const homeRoutes: Routes = [
         path: 'supervision',
         canLoad: [AuthGuard],
         loadChildren: () => import('../supervision/supervision.module').then( e => e.SupervisionModule)
-    }
+    },
+    { path: '**', redirectTo: '' },
 ]
