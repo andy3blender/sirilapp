@@ -6,7 +6,6 @@ import { getLogin } from '../../store/actions/login.actions';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { personaUsuario } from '../../models/personaUsuario';
 import { AuthService } from '../../services/auth.service';
-//import { transporter } from 'src/app/utils/mailer';
 
 @Component({
   selector: 'app-login',
